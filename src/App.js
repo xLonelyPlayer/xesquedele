@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import crud from './config/crud';
 
 function App() {
+
+  const addRegister = () => {
+
+    const savedData = {
+ born: 2000, last: 'Carvalho', first: 'Bruno' 
+    }
+
+    crud.save("users", savedData)
+      .then(user => {
+        console.log('USER:', user);
+      })
+      .catch(err => {
+        console.log('ERR:', err);
+      })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Augusto Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button
+        onClick={addRegister}
+      >
+        Add
+      </button>
     </div>
   );
 }
